@@ -2,6 +2,7 @@ package com.sw.demoit
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.sw.mvp.presenters.TaskActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val mvpView = findViewById(R.id.mvp_tv)
         mvpView!!.setOnClickListener {
-
+            TaskActivity.invoke(this@MainActivity)
         }
     }
 }

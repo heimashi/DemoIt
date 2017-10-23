@@ -8,18 +8,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sw.mvp.R;
+import com.sw.mvp.bean.BTaskData;
 import com.sw.mvp.bean.TaskData;
 
 
-public class ATaskView extends RelativeLayout implements BaseView<TaskData> {
+public class BTaskView extends RelativeLayout implements BaseView<BTaskData> {
 
-    private TextView titleTv, contentTv;
+    private TextView titleTv, contentTv, contentTv2;
 
-    public ATaskView(Context context) {
+    public BTaskView(Context context) {
         this(context, null);
     }
 
-    public ATaskView(Context context, AttributeSet attrs) {
+    public BTaskView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(context);
     }
@@ -28,6 +29,7 @@ public class ATaskView extends RelativeLayout implements BaseView<TaskData> {
         inflate(context, R.layout.mvp_view_atask, this);
         titleTv = (TextView) findViewById(R.id.title);
         contentTv = (TextView) findViewById(R.id.content);
+        contentTv2 = (TextView) findViewById(R.id.content2);
         Button detailBtn = (Button) findViewById(R.id.detail_btn);
         detailBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -41,9 +43,10 @@ public class ATaskView extends RelativeLayout implements BaseView<TaskData> {
 
 
     @Override
-    public void updateData(TaskData data) {
+    public void updateData(BTaskData data) {
         titleTv.setText(data.title);
         contentTv.setText(data.content);
+        contentTv2.setText(data.content2);
     }
 
     private ATaskViewCallback callback;
