@@ -10,7 +10,7 @@ import android.os.Looper;
 public abstract class BaseModel {
     private Handler handler = new Handler(Looper.getMainLooper());
 
-    public void doMockHttp(final HttpCallback callback) {
+    public void doMockHttp(final ModelCallback callback) {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -21,7 +21,18 @@ public abstract class BaseModel {
         }, 2000);
     }
 
-    public interface HttpCallback {
+    public void doMockDB(final ModelCallback callback) {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (callback != null) {
+                    callback.onSuccess();
+                }
+            }
+        }, 1000);
+    }
+
+    public interface ModelCallback {
         void onSuccess();
 
         void onFailed();

@@ -7,7 +7,7 @@ import com.sw.mvp.bean.TaskData;
 public class TaskModel extends BaseModel {
 
     public void loadPageData() {
-        doMockHttp(new HttpCallback() {
+        doMockHttp(new ModelCallback() {
             @Override
             public void onSuccess() {
                 if (callback != null) {
@@ -31,7 +31,7 @@ public class TaskModel extends BaseModel {
     }
 
     public void loadATaskData() {
-        doMockHttp(new HttpCallback() {
+        doMockHttp(new ModelCallback() {
             @Override
             public void onSuccess() {
                 if (callback != null) {
@@ -50,7 +50,7 @@ public class TaskModel extends BaseModel {
     }
 
     public void loadBTaskData() {
-        doMockHttp(new HttpCallback() {
+        doMockDB(new ModelCallback() {
             @Override
             public void onSuccess() {
                 if (callback != null) {
