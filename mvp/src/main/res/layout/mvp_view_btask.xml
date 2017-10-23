@@ -7,26 +7,29 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
         android:text="B模块"
         android:textColor="#333333" />
 
     <TextView
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
         android:text="A模块xxxxxxxxxxxxxxxA模块xxxxxxxxxxxxxxxA模块xxxxxxxxxxxxxxxA模块xxxxxxxxxxxxxxxA模块xxxxxxxxxxxxxxx"
         android:textColor="#666666" />
 
     <TextView
         android:id="@+id/content2"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@id/title"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
         android:text="A模块xxxxxxxxxxxxxxxA模块xxxxxxxxxxxxxxxA模块xxxxxxxxxxxxxxxA模块xxxxxxxxxxxxxxxA模块xxxxxxxxxxxxxxx"
         android:textColor="#666666" />
 
@@ -35,8 +38,9 @@
         android:id="@+id/detail_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_below="@id/content2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:text="更新"
         android:textColor="#333333" />

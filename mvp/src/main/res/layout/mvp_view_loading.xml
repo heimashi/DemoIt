@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:background="#383838"
+        android:gravity="center"
+        android:text="加载中..."
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+
+</merge>

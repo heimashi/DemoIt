@@ -13,13 +13,16 @@ import com.sw.mvp.bean.TaskData;
 import com.sw.mvp.models.TaskModel;
 import com.sw.mvp.views.ATaskView;
 import com.sw.mvp.views.BTaskView;
+import com.sw.mvp.views.LoadingView;
 
 
 public class TaskActivity extends Activity {
 
     //Views
+    private LoadingView loadingView;
     private ATaskView aTaskView;
     private BTaskView bTaskView;
+
 
     //Models
     private TaskModel taskModel;
@@ -35,19 +38,28 @@ public class TaskActivity extends Activity {
     private void initView() {
         setContentView(R.layout.mvp_activity_task);
         LinearLayout containerLayout = findViewById(R.id.container_layout);
-        aTaskView = new ATaskView(this);
-        containerLayout.addView(aTaskView);
+
+        //case 1: from xml
+        loadingView = findViewById(R.id.loading_view);
+        aTaskView = findViewById(R.id.a_task_view);
+
+        //case 2: from java
         bTaskView = new BTaskView(this);
         containerLayout.addView(bTaskView);
+
+
+        //set view callbacks
         aTaskView.setCallback(new ATaskView.ATaskViewCallback() {
             @Override
             public void onUpdateCallback() {
+                loadingView.show();
                 taskModel.loadATaskData();
             }
         });
         bTaskView.setCallback(new BTaskView.ATaskViewCallback() {
             @Override
             public void onUpdateCallback() {
+                loadingView.show();
                 taskModel.loadBTaskData();
             }
         });
@@ -58,20 +70,26 @@ public class TaskActivity extends Activity {
         taskModel.setCallback(new TaskModel.TaskCallback() {
             @Override
             public void onPageData(TaskData data, BTaskData bData) {
+                loadingView.hide();
                 aTaskView.updateData(data);
                 bTaskView.updateData(bData);
             }
 
             @Override
             public void onTaskALoad(TaskData data) {
+                loadingView.hide();
                 aTaskView.updateData(data);
             }
 
             @Override
             public void onTaskBLoad(BTaskData data) {
+                loadingView.hide();
                 bTaskView.updateData(data);
             }
         });
+
+        //load init data
+        loadingView.show();
         taskModel.loadPageData();
     }
 

@@ -1,28 +1,24 @@
 package com.sw.mvp.models;
 
+import android.os.Handler;
+import android.os.Looper;
+
 /**
  * Created by shiwang on 20/10/2017.
  */
 
 public abstract class BaseModel {
+    private Handler handler = new Handler(Looper.getMainLooper());
 
     public void doMockHttp(final HttpCallback callback) {
-        new Thread(new Runnable() {
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(2000);
-                    if (callback != null) {
-                        callback.onSuccess();
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    if (callback != null) {
-                        callback.onFailed();
-                    }
+                if (callback != null) {
+                    callback.onSuccess();
                 }
             }
-        }).start();
+        }, 2000);
     }
 
     public interface HttpCallback {

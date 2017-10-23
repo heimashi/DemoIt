@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.sw.mvp.R;
 import com.sw.mvp.bean.BTaskData;
-import com.sw.mvp.bean.TaskData;
 
 
 public class BTaskView extends RelativeLayout implements BaseView<BTaskData> {
@@ -26,7 +25,7 @@ public class BTaskView extends RelativeLayout implements BaseView<BTaskData> {
     }
 
     private void initView(Context context) {
-        inflate(context, R.layout.mvp_view_atask, this);
+        inflate(context, R.layout.mvp_view_btask, this);
         titleTv = (TextView) findViewById(R.id.title);
         contentTv = (TextView) findViewById(R.id.content);
         contentTv2 = (TextView) findViewById(R.id.content2);
@@ -39,6 +38,7 @@ public class BTaskView extends RelativeLayout implements BaseView<BTaskData> {
                 }
             }
         });
+        setBackgroundColor(0xffc0c0c0);
     }
 
 

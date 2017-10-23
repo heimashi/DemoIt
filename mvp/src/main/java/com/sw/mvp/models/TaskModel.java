@@ -36,7 +36,7 @@ public class TaskModel extends BaseModel {
             public void onSuccess() {
                 if (callback != null) {
                     TaskData taskData = new TaskData();
-                    taskData.title = System.currentTimeMillis() + "sfsffs123e23324332" + System.currentTimeMillis();
+                    taskData.title = "TASK_A_" + System.currentTimeMillis();
                     taskData.content = System.currentTimeMillis() + "fsfsffsffsfdfsfsdf123e23324332123e23324332123e23324332";
                     callback.onTaskALoad(taskData);
                 }
@@ -55,7 +55,7 @@ public class TaskModel extends BaseModel {
             public void onSuccess() {
                 if (callback != null) {
                     BTaskData taskData = new BTaskData();
-                    taskData.title = "sfsffs123e23324332123e23324332" + System.currentTimeMillis();
+                    taskData.title = "TASK_B_" + System.currentTimeMillis();
                     taskData.content = System.currentTimeMillis() + "fsfsffsffsfdfsfsdf123e23324332123e23324332123e23324332123e23324332123e23324332";
                     taskData.content2 = System.currentTimeMillis() + "fsfsffsffsfdfsfsdfSFFSDFFSFFSF123e23324332123e23324332123e23324332123e23324332123e23324332123e23324332123e23324332";
                     callback.onTaskBLoad(taskData);
