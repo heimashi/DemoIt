@@ -17,7 +17,7 @@ import javax.lang.model.util.Elements;
 
 public class AnnotatedClass {
 
-    public static final ClassName FINDER = ClassName.get("com.sw.demoit.annotation.clazz", "Finder");
+    public static final ClassName VIEW_BINDER_INTERFACE = ClassName.get("com.sw.demoit.annotation.clazz", "ViewBinder");
     public static final ClassName PROVIDER = ClassName.get("com.sw.demoit.annotation.clazz", "Provider");
 
     public TypeElement mClassElement;
@@ -55,9 +55,9 @@ public class AnnotatedClass {
         }
 
         // generate whole class
-        TypeSpec finderClass = TypeSpec.classBuilder(mClassElement.getSimpleName() + "$$Finder")
+        TypeSpec finderClass = TypeSpec.classBuilder(mClassElement.getSimpleName() + "$$ViewBinder")
                 .addModifiers(Modifier.PUBLIC)
-                .addSuperinterface(ParameterizedTypeName.get(FINDER, TypeName.get(mClassElement.asType())))
+                .addSuperinterface(ParameterizedTypeName.get(VIEW_BINDER_INTERFACE, TypeName.get(mClassElement.asType())))
                 .addMethod(injectMethodBuilder.build())
                 .build();
 

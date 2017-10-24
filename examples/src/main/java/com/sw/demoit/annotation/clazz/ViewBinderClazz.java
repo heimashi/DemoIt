@@ -6,12 +6,12 @@ import android.view.View;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ViewFinder {
+public class ViewBinderClazz {
 
     private static final ActivityProvider PROVIDER_ACTIVITY = new ActivityProvider();
     private static final ViewProvider PROVIDER_VIEW = new ViewProvider();
 
-    private static final Map<String, Finder> FINDER_MAP = new HashMap<>();
+    private static final Map<String, ViewBinder> FINDER_MAP = new HashMap<>();
 
     public static void inject(Activity activity) {
         inject(activity, activity, PROVIDER_ACTIVITY);
@@ -29,13 +29,13 @@ public class ViewFinder {
     public static void inject(Object host, Object source, Provider provider) {
         String className = host.getClass().getName();
         try {
-            Finder finder = FINDER_MAP.get(className);
-            if (finder == null) {
-                Class<?> finderClass = Class.forName(className + "$$Finder");
-                finder = (Finder) finderClass.newInstance();
-                FINDER_MAP.put(className, finder);
+            ViewBinder viewBinder = FINDER_MAP.get(className);
+            if (viewBinder == null) {
+                Class<?> finderClass = Class.forName(className + "$$ViewBinder");
+                viewBinder = (ViewBinder) finderClass.newInstance();
+                FINDER_MAP.put(className, viewBinder);
             }
-            finder.inject(host, source, provider);
+            viewBinder.inject(host, source, provider);
         } catch (Exception e) {
             throw new RuntimeException("Unable to inject for " + className, e);
         }

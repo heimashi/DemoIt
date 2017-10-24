@@ -9,9 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.sw.annotation.clazz.BindViewClazz;
-import com.sw.annotation.runtime.BindViewRunTime;
 import com.sw.demoit.R;
-import com.sw.demoit.annotation.runtime.BindViewUtil;
 
 
 public class BindViewClazzActivity extends Activity {
@@ -27,7 +25,7 @@ public class BindViewClazzActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bindview);
 
-        ViewFinder.inject(this);
+        ViewBinderClazz.inject(this);
         textView.setText("clazz bind success");
         button.setText("clazz bind success btn");
     }

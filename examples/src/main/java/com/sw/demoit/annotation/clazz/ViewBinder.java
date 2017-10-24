@@ -1,6 +1,6 @@
 package com.sw.demoit.annotation.clazz;
 
-public interface Finder<T> {
+public interface ViewBinder<T> {
 
     void inject(T host, Object source, Provider provider);
 }
