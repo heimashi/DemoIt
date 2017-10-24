@@ -1,4 +1,4 @@
-package com.sw.demoit;
+package com.sw.demoit.annotation;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,9 +8,8 @@ import android.support.annotation.Nullable;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.sw.annotation.R;
 import com.sw.annotation.runtime.BindViewRunTime;
-import com.sw.annotation.runtime.BindViewUtil;
+import com.sw.demoit.R;
 
 
 public class BindViewRuntimeActivity extends Activity {
@@ -24,7 +23,7 @@ public class BindViewRuntimeActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.annotation_activity_bindview);
+        setContentView(R.layout.activity_bindview);
         BindViewUtil.inject(this);
         textView.setText("bind success");
         button.setText("bind success btn");

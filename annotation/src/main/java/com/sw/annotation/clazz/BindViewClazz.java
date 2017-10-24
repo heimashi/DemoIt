@@ -1,4 +1,4 @@
-package com.sw.annotation.runtime;
+package com.sw.annotation.clazz;
 
 
 import java.lang.annotation.ElementType;
@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Target({ElementType.FIELD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface BindViewRunTime {
-     int value();
+@Retention(RetentionPolicy.CLASS)
+public @interface BindViewClazz {
+    int value();
 }

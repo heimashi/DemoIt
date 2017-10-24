@@ -2,6 +2,7 @@ package com.sw.demoit
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.sw.demoit.annotation.BindViewRuntimeActivity
 import com.sw.mvp.presenters.TaskActivity
 
 class MainActivity : AppCompatActivity() {

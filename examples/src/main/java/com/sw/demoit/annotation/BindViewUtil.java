@@ -1,7 +1,9 @@
-package com.sw.annotation.runtime;
+package com.sw.demoit.annotation;
 
 
 import android.app.Activity;
+
+import com.sw.annotation.runtime.BindViewRunTime;
 
 import java.lang.reflect.Field;
 
