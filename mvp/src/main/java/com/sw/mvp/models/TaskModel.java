@@ -1,7 +1,7 @@
 package com.sw.mvp.models;
 
 import com.sw.mvp.bean.BTaskData;
-import com.sw.mvp.bean.TaskData;
+import com.sw.mvp.bean.ATaskData;
 
 
 public class TaskModel extends BaseModel {
@@ -11,15 +11,15 @@ public class TaskModel extends BaseModel {
             @Override
             public void onSuccess() {
                 if (callback != null) {
-                    TaskData taskData = new TaskData();
-                    taskData.title = "TASK_A_" + System.currentTimeMillis();
-                    taskData.content = System.currentTimeMillis() + "fsfsffsffsfdfsfsdf123e23324332123e23324332123e23324332123e23324332123e23324332123e23324332";
+                    ATaskData ATaskData = new ATaskData();
+                    ATaskData.title = "TASK_A_" + System.currentTimeMillis();
+                    ATaskData.content = System.currentTimeMillis() + "fsfsffsffsfdfsfsdf123e23324332123e23324332123e23324332123e23324332123e23324332123e23324332";
 
                     BTaskData bTaskData = new BTaskData();
                     bTaskData.title = "TASK_B_" + System.currentTimeMillis();
                     bTaskData.content = System.currentTimeMillis() + "fsfsfrrwerwrwr34242342423fsfsfrrwerwrwr34242342423fsfsfrrwerwrwr34242342423fsfsfrrwerwrwr34242342423fsfsfrrwerwrwr34242342423";
                     bTaskData.content2 = System.currentTimeMillis() + "fsfsffsffsfdfsfsdfSFFSDFFSFFSF123e23324332123e23324332123e23324332123e23324332";
-                    callback.onPageData(taskData, bTaskData);
+                    callback.onPageData(ATaskData, bTaskData);
                 }
             }
 
@@ -35,10 +35,10 @@ public class TaskModel extends BaseModel {
             @Override
             public void onSuccess() {
                 if (callback != null) {
-                    TaskData taskData = new TaskData();
-                    taskData.title = "TASK_A_" + System.currentTimeMillis();
-                    taskData.content = System.currentTimeMillis() + "fsfsffsffsfdfsfsdf123e23324332123e23324332123e23324332";
-                    callback.onTaskALoad(taskData);
+                    ATaskData ATaskData = new ATaskData();
+                    ATaskData.title = "TASK_A_" + System.currentTimeMillis();
+                    ATaskData.content = System.currentTimeMillis() + "fsfsffsffsfdfsfsdf123e23324332123e23324332123e23324332";
+                    callback.onTaskALoad(ATaskData);
                 }
             }
 
@@ -76,9 +76,9 @@ public class TaskModel extends BaseModel {
     }
 
     public interface TaskCallback {
-        void onPageData(TaskData data, BTaskData bData);
+        void onPageData(ATaskData data, BTaskData bData);
 
-        void onTaskALoad(TaskData data);
+        void onTaskALoad(ATaskData data);
 
         void onTaskBLoad(BTaskData data);
     }

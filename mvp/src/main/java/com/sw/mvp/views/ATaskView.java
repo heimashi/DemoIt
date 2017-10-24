@@ -8,10 +8,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sw.mvp.R;
-import com.sw.mvp.bean.TaskData;
+import com.sw.mvp.bean.ATaskData;
 
 
-public class ATaskView extends RelativeLayout implements BaseView<TaskData> {
+public class ATaskView extends RelativeLayout implements BaseView<ATaskData> {
 
     private TextView titleTv, contentTv;
 
@@ -41,7 +41,7 @@ public class ATaskView extends RelativeLayout implements BaseView<TaskData> {
 
 
     @Override
-    public void updateData(TaskData data) {
+    public void updateData(ATaskData data) {
         titleTv.setText(data.title);
         contentTv.setText(data.content);
     }

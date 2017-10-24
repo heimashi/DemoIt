@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 
 import com.sw.mvp.R;
 import com.sw.mvp.bean.BTaskData;
-import com.sw.mvp.bean.TaskData;
+import com.sw.mvp.bean.ATaskData;
 import com.sw.mvp.models.TaskModel;
 import com.sw.mvp.views.ATaskView;
 import com.sw.mvp.views.BTaskView;
@@ -33,6 +33,12 @@ public class TaskActivity extends Activity {
         super.onCreate(savedInstanceState);
         initView();
         initData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadData();
     }
 
     private void initView() {
@@ -69,14 +75,14 @@ public class TaskActivity extends Activity {
         taskModel = new TaskModel();
         taskModel.setCallback(new TaskModel.TaskCallback() {
             @Override
-            public void onPageData(TaskData data, BTaskData bData) {
+            public void onPageData(ATaskData data, BTaskData bData) {
                 loadingView.hide();
                 aTaskView.updateData(data);
                 bTaskView.updateData(bData);
             }
 
             @Override
-            public void onTaskALoad(TaskData data) {
+            public void onTaskALoad(ATaskData data) {
                 loadingView.hide();
                 aTaskView.updateData(data);
             }
@@ -88,6 +94,10 @@ public class TaskActivity extends Activity {
             }
         });
 
+
+    }
+
+    private void loadData() {
         //load init data
         loadingView.show();
         taskModel.loadPageData();
