@@ -1,4 +1,4 @@
-package com.sw.demoit.annotation;
+package com.sw.demoit.annotation.runtime;
 
 
 import android.app.Activity;

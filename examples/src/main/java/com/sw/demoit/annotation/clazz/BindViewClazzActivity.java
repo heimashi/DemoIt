@@ -1,4 +1,4 @@
-package com.sw.demoit.annotation;
+package com.sw.demoit.annotation.clazz;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,30 +8,33 @@ import android.support.annotation.Nullable;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.sw.annotation.clazz.BindViewClazz;
 import com.sw.annotation.runtime.BindViewRunTime;
 import com.sw.demoit.R;
+import com.sw.demoit.annotation.runtime.BindViewUtil;
 
 
-public class BindViewRuntimeActivity extends Activity {
+public class BindViewClazzActivity extends Activity {
 
-    @BindViewRunTime(R.id.test_tv)
+    @BindViewClazz(R.id.test_tv)
     public TextView textView;
 
-    @BindViewRunTime(R.id.test_btn)
+    @BindViewClazz(R.id.test_btn)
     public Button button;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bindview);
-        BindViewUtil.inject(this);
+
+
         textView.setText("bind success");
         button.setText("bind success btn");
     }
 
 
     public static void invoke(Context context) {
-        context.startActivity(new Intent(context, BindViewRuntimeActivity.class));
+        context.startActivity(new Intent(context, BindViewClazzActivity.class));
     }
 
 }
