@@ -25,8 +25,8 @@ public class BindViewRuntimeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bindview);
         BindViewUtil.inject(this);
-        textView.setText("bind success");
-        button.setText("bind success btn");
+        textView.setText("runtime bind success");
+        button.setText("runtime bind success btn");
     }
 
 

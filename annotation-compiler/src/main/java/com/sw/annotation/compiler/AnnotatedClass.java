@@ -17,8 +17,8 @@ import javax.lang.model.util.Elements;
 
 public class AnnotatedClass {
 
-    public static final ClassName FINDER = ClassName.get("com.sw.annotation.clazz", "Finder");
-    public static final ClassName PROVIDER = ClassName.get("com.sw.annotation.clazz", "Provider");
+    public static final ClassName FINDER = ClassName.get("com.sw.demoit.annotation.clazz", "Finder");
+    public static final ClassName PROVIDER = ClassName.get("com.sw.demoit.annotation.clazz", "Provider");
 
     public TypeElement mClassElement;
     public List<BindViewField> mFields;

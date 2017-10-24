@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".annotation.runtime.BindViewRuntimeActivity" />
+        <activity android:name=".annotation.clazz.BindViewClazzActivity" />
     </application>
 
 </manifest>

@@ -27,9 +27,9 @@ public class BindViewClazzActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bindview);
 
-
-        textView.setText("bind success");
-        button.setText("bind success btn");
+        ViewFinder.inject(this);
+        textView.setText("clazz bind success");
+        button.setText("clazz bind success btn");
     }
 
 
