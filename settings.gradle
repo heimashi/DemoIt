@@ -1,1 +1,1 @@
-include ':app', ':mvp'
+include ':examples', ':mvp', ':annotation'

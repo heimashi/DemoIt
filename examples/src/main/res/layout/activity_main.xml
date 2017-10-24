@@ -12,4 +12,12 @@
         android:gravity="center"
         android:text="to mvp demo" />
 
+    <TextView
+        android:id="@+id/annotation_tv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="to annotation demo" />
+
+
 </LinearLayout>
