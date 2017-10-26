@@ -6,6 +6,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.sw.demoit.annotation.clazz.BindViewClazzActivity
 import com.sw.demoit.annotation.runtime.BindViewRuntimeActivity
 import com.sw.mvp.presenters.TaskActivity
+import com.sw.retrofit.Demo1Activity
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,17 +23,21 @@ class MainActivity : AppCompatActivity() {
         val annotationView = findViewById(R.id.runtime_annotation_tv)
         val classAnnotationView = findViewById(R.id.class_annotation_tv)
         val routerView = findViewById(R.id.router_tv)
+        val retrofitView = findViewById(R.id.retrofit_tv)
         mvpView!!.setOnClickListener {
             TaskActivity.invoke(this@MainActivity)
         }
-        annotationView!!.setOnClickListener{
+        annotationView!!.setOnClickListener {
             BindViewRuntimeActivity.invoke(this@MainActivity)
         }
-        classAnnotationView!!.setOnClickListener{
+        classAnnotationView!!.setOnClickListener {
             BindViewClazzActivity.invoke(this@MainActivity)
         }
-        routerView!!.setOnClickListener{
+        routerView!!.setOnClickListener {
             ARouter.getInstance().build("/test/aactivity").navigation()
+        }
+        retrofitView!!.setOnClickListener {
+            Demo1Activity.invoke(this@MainActivity)
         }
     }
 }

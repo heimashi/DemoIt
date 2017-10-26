@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+    package="com.sw.retrofit">
+
+    <application>
+
+        <activity android:name=".Demo1Activity" />
+    </application>
+
+</manifest>

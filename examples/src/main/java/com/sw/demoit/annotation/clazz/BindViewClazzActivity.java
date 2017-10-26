@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringDef;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class BindViewClazzActivity extends Activity {
 
     @BindViewClazz(R.id.test_btn)
     public Button button;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
