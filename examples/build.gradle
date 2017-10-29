@@ -30,6 +30,8 @@ dependencies {
     compile project(':mvp')
     compile project(':router')
     compile project(':retrofit_demo')
+    compile project(':kotlin_demo')
+    compile project(':rxjava_demo')
     compile project(':annotation')
     annotationProcessor project(':annotation-compiler')
     testCompile 'junit:junit:4.12'
