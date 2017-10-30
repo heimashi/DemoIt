@@ -36,4 +36,23 @@ public class CreatingObservablesOperatorsTest {
         operators.testDefer2();
     }
 
+    @Test
+    public void testRange() throws Exception {
+        operators.testRange();
+    }
+
+    @Test
+    public void testRepeat() throws Exception {
+        operators.testRepeat();
+    }
+
+    @Test
+    public void testTimer() throws Exception {
+        operators.testTimer();
+    }
+
+    @Test
+    public void testInterval() throws Exception {
+        operators.testInterval();
+    }
 }

@@ -1,5 +1,7 @@
 package com.sw.rxjava.hello;
 
+import java.util.concurrent.TimeUnit;
+
 import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Action0;
@@ -11,6 +13,28 @@ import rx.functions.Func0;
  */
 
 public class CreatingObservablesOperators {
+
+
+
+    /*
+    *
+    * http://reactivex.io/documentation/operators.html
+    *
+    Creating Observables
+Operators that originate new Observables.
+
+Create — create an Observable from scratch by calling observer methods programmatically
+Defer — do not create the Observable until the observer subscribes, and create a fresh Observable for each observer
+Empty/Never/Throw — create Observables that have very precise and limited behavior
+From — convert some other object or data structure into an Observable
+Interval — create an Observable that emits a sequence of integers spaced by a particular time interval
+Just — convert an object or a set of objects into an Observable that emits that or those objects
+Range — create an Observable that emits a range of sequential integers
+Repeat — create an Observable that emits a particular item or sequence of items repeatedly
+Start — create an Observable that emits the return value of a function
+Timer — create an Observable that emits a single item after a given delay
+    *
+    * */
 
 
     public void testCreate() {
@@ -118,7 +142,8 @@ public class CreatingObservablesOperators {
 
         public Observable<String> valueDeferObservable() {
             return Observable.defer(new Func0<Observable<String>>() {
-                @Override public Observable<String> call() {
+                @Override
+                public Observable<String> call() {
                     return Observable.just(value);
                 }
             });
@@ -154,10 +179,61 @@ public class CreatingObservablesOperators {
     }
 
 
-    public void testRange(){
-        Observable<Integer>
+    public void testRange() {
+        Observable.range(2, 8).subscribe(new Action1<Integer>() {
+            @Override
+            public void call(Integer integer) {
+                System.out.println(integer);
+            }
+        });
+    }
+
+    public void testRepeat() {
+        Observable.range(1, 3).repeat(3).subscribe(new Action1<Integer>() {
+            @Override
+            public void call(Integer integer) {
+                System.out.println(integer);
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+
+            }
+        }, new Action0() {
+            @Override
+            public void call() {
+                System.out.println("onCompleted");
+            }
+        });
     }
 
 
+    public void testTimer() {
+        Observable.timer(3, TimeUnit.SECONDS).subscribe(new Subscriber<Long>() {
+            @Override
+            public void onCompleted() {
+                System.out.println("Sequence complete.");
+            }
 
+            @Override
+            public void onError(Throwable e) {
+                System.out.println("error:" + e.getMessage());
+            }
+
+            @Override
+            public void onNext(Long aLong) {
+                System.out.println("Next:" + aLong.toString());
+            }
+        });
+    }
+
+
+    public void testInterval() {
+        Observable.interval(2, 3, TimeUnit.SECONDS).subscribe(new Action1<Long>() {
+            @Override
+            public void call(Long aLong) {
+                System.out.println("Next" + aLong);
+            }
+        });
+    }
 }

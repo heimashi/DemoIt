@@ -2,11 +2,16 @@ package com.sw.demoit
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.alibaba.android.arouter.launcher.ARouter
 import com.sw.demoit.annotation.clazz.BindViewClazzActivity
 import com.sw.demoit.annotation.runtime.BindViewRuntimeActivity
 import com.sw.mvp.presenters.TaskActivity
 import com.sw.retrofit.Demo1Activity
+import rx.Observable
+import rx.android.schedulers.AndroidSchedulers
+import rx.functions.Action1
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,9 +39,16 @@ class MainActivity : AppCompatActivity() {
             BindViewClazzActivity.invoke(this@MainActivity)
         }
         routerView!!.setOnClickListener {
+            var i = 0
+            Observable.interval(2, 3, TimeUnit.SECONDS)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(Action1 { Toast.makeText(this@MainActivity, "haha" + i++, Toast.LENGTH_SHORT).show() })
             ARouter.getInstance().build("/test/aactivity").navigation()
         }
         retrofitView!!.setOnClickListener {
+            Observable.timer(3, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(Action1 {
+                Toast.makeText(this@MainActivity, "haha", Toast.LENGTH_SHORT).show()
+            })
             Demo1Activity.invoke(this@MainActivity)
         }
     }
