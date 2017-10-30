@@ -1,4 +1,4 @@
-package com.sw.mylibrary;
+package com.sw.rxjava.hello;
 
 import com.sw.rxjava.hello.Hello;
 
