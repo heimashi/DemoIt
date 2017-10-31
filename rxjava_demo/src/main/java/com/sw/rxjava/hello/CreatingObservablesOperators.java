@@ -236,4 +236,8 @@ Timer — create an Observable that emits a single item after a given delay
             }
         });
     }
+
+    public void testStart() {
+
+    }
 }
