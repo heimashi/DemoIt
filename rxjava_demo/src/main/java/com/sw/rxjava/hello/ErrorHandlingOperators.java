@@ -1,8 +1,11 @@
 package com.sw.rxjava.hello;
 
+import java.util.concurrent.TimeUnit;
+
 import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Func1;
+import rx.functions.Func2;
 
 /**
  * Created by shiwang on 31/10/2017.
@@ -275,6 +278,159 @@ Retry — if a source Observable sends an onError notification, resubscribe to i
         });
 
 
+    }
+
+    public void testRetry() {
+        /**
+         * ①. retry()
+         *     无限次尝试重新订阅
+         */
+//        Observable.create(new Observable.OnSubscribe<Integer>() {
+//            @Override
+//            public void call(Subscriber<? super Integer> subscriber) {
+//                for (int i = 0; i < 3; i++) {
+//                    if (i == 1) {
+//                        print("①retry()->onError");
+//                        subscriber.onError(new RuntimeException("always fails"));
+//                    } else {
+//                        subscriber.onNext(i);
+//                    }
+//                }
+//            }
+//        }).retry()    //无限次尝试重新订阅
+//                .subscribe(new Subscriber<Integer>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        print("①retry()->onCompleted");
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        print("①retry()->onError" + e.getMessage());
+//                    }
+//
+//                    @Override
+//                    public void onNext(Integer i) {
+//                        print("①retry()->onNext" + i);
+//                    }
+//                });
+
+/**
+ * ②. retry(count)
+ *     最多2次尝试重新订阅
+ */
+        Observable.create(new Observable.OnSubscribe<Integer>() {
+            @Override
+            public void call(Subscriber<? super Integer> subscriber) {
+                for (int i = 0; i < 3; i++) {
+                    if (i == 1) {
+                        print("②retry(count)->onError");
+                        subscriber.onError(new RuntimeException("always fails"));
+                    } else {
+                        subscriber.onNext(i);
+                    }
+                }
+            }
+        }).retry(2)    //最多尝试2次重新订阅
+                .subscribe(new Subscriber<Integer>() {
+                    @Override
+                    public void onCompleted() {
+                        print("②retry(count)->onCompleted");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        print("②retry(count)->onError" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(Integer i) {
+                        print("②retry(count)->onNext" + i);
+                    }
+                });
+
+/**
+ * ③. retry(Func2)
+ */
+        Observable.create(new Observable.OnSubscribe<Integer>() {
+            @Override
+            public void call(Subscriber<? super Integer> subscriber) {
+                for (int i = 0; i < 3; i++) {
+                    if (i == 1) {
+                        print("③retry(Func2)->onError");
+                        subscriber.onError(new RuntimeException("always fails"));
+                    } else {
+                        subscriber.onNext(i);
+                    }
+                }
+            }
+        }).retry(new Func2<Integer, Throwable, Boolean>() {
+            @Override
+            public Boolean call(Integer integer, Throwable throwable) {
+                print("③发生错误了：" + throwable.getMessage() + ",第" + integer + "次重新订阅");
+                if (integer > 2) {
+                    return false;//不再重新订阅
+                }
+                //此处也可以通过判断throwable来控制不同的错误不同处理
+                return true;
+            }
+        }).subscribe(new Subscriber<Integer>() {
+            @Override
+            public void onCompleted() {
+                print("③retry(Func2)->onCompleted");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                print("③retry(Func2)->onError" + e.getMessage());
+            }
+
+            @Override
+            public void onNext(Integer i) {
+                print("③retry(Func2)->onNext" + i);
+            }
+        });
+    }
+
+    private int count = 0;
+
+    public void testRetryWhen() {
+        Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                print("+++++++++sub");
+                subscriber.onError(new Throwable("test error"));
+            }
+        }).retryWhen(new Func1<Observable<? extends Throwable>, Observable<?>>() {
+            @Override
+            public Observable<?> call(Observable<? extends Throwable> observable) {
+                return observable.flatMap(new Func1<Throwable, Observable<?>>() {
+                    @Override
+                    public Observable<?> call(Throwable throwable) {
+                        print("+++++++++cou:" + count);
+                        if (count++ < 3) {
+                            return Observable.timer(1, TimeUnit.SECONDS);
+                        }
+                        return Observable.error(throwable);
+                    }
+                });
+            }
+        }).subscribe(new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+                print("+++++++++onCompleted");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                print("+++++++++onError:" + e.toString());
+            }
+
+            @Override
+            public void onNext(String s) {
+                print("+++++++++onNext:" + s);
+            }
+        });
     }
 
 

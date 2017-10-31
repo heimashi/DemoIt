@@ -16,4 +16,15 @@ public class ErrorHandlingOperatorsTest {
         operators.testError();
     }
 
+    @Test
+    public void testRetry() throws Exception {
+        operators.testRetry();
+    }
+
+
+    @Test
+    public void testRetryWhen() throws Exception {
+        operators.testRetryWhen();
+    }
+
 }

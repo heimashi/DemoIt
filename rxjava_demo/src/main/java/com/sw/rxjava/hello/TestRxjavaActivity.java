@@ -58,6 +58,14 @@ public class TestRxjavaActivity extends Activity {
             }
         });
 
+        findViewById(R.id.test_retry_when).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ErrorHandlingOperators operators = new ErrorHandlingOperators();
+                operators.testRetryWhen();
+            }
+        });
+
     }
 
     public static void invoke(Context context) {

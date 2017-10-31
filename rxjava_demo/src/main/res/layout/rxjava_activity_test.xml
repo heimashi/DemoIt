@@ -27,11 +27,11 @@
         android:text="test_join" />
 
     <TextView
-        android:id="@+id/router_tv"
+        android:id="@+id/test_retry_when"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
-        android:text="to router demo" />
+        android:text="test_retry_when" />
 
     <TextView
         android:id="@+id/retrofit_tv"
