@@ -2,9 +2,13 @@ package com.sw.rxjava.hello;
 
 import android.util.Log;
 
+import java.util.concurrent.TimeUnit;
+
 import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Action1;
+import rx.functions.Func1;
+import rx.functions.Func2;
 import rx.functions.Func3;
 import rx.schedulers.Schedulers;
 
@@ -72,6 +76,141 @@ Zip — combine the emissions of multiple Observables together via a specified f
                 Log.v(TAG, "combineLatest:" + s);
             }
         });
+    }
+
+
+    public void testJoin() {
+        //目标Observable
+        Observable<Integer> obs1 = Observable.create(new Observable.OnSubscribe<Integer>() {
+            @Override
+            public void call(Subscriber<? super Integer> subscriber) {
+                for (int i = 1; i < 5; i++) {
+                    subscriber.onNext(i);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                subscriber.onCompleted();
+            }
+        });
+        //join
+        Observable.just("srcObs-")
+                .join(obs1,
+                        //接受从源Observable发射来的数据，并返回一个Observable，
+                        //这个Observable的生命周期决定了源Observable发射出来数据的有效期
+                        new Func1<String, Observable<Long>>() {
+                            @Override
+                            public Observable<Long> call(String s) {
+                                return Observable.timer(3000, TimeUnit.MILLISECONDS);
+                            }
+                        },
+                        //接受从目标Observable发射来的数据，并返回一个Observable，
+                        //这个Observable的生命周期决定了目标Observable发射出来数据的有效期
+                        new Func1<Integer, Observable<Long>>() {
+                            @Override
+                            public Observable<Long> call(Integer integer) {
+                                return Observable.timer(2000, TimeUnit.MILLISECONDS);
+                            }
+                        },
+                        //接收从源Observable和目标Observable发射来的数据，并返回最终组合完的数据
+                        new Func2<String, Integer, String>() {
+                            @Override
+                            public String call(String str1, Integer integer) {
+                                return str1 + integer;
+                            }
+                        })
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String o) {
+                        Log.v(TAG, "join:" + o);
+                    }
+                });
+
+    }
+
+
+    public void testMerge() {
+        Observable<Integer> odds = Observable.just(1, 3, 5);
+        Observable<Integer> evens = Observable.just(2, 4, 6);
+        Observable.merge(odds, evens)
+                .subscribe(new Subscriber<Integer>() {
+                    @Override
+                    public void onNext(Integer item) {
+                        print("merge Next: " + item);
+                    }
+
+                    @Override
+                    public void onError(Throwable error) {
+                        print("merge Error: " + error.getMessage());
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        print("merge Sequence complete.");
+                    }
+                });
+    }
+
+    public void testStartWith() {
+        Observable<Integer> obs1 = Observable.just(1, 2, 3);
+        Observable<Integer> obs2 = Observable.just(4, 5, 6);
+        obs1.startWith(obs2).subscribe(new Action1<Integer>() {
+            @Override
+            public void call(Integer integer) {
+                print("onNext:" + integer);
+            }
+        });
+    }
+
+    public void testZip() {
+        Observable obs1 = Observable.just(1, 2, 3, 4, 5);
+        Observable obs2 = Observable.just(10, 20, 30, 40);
+/*
+ * zip(Observable,FuncN):
+ * ①.能接受1~9个Observable作为参数，或者单个Observables列表作为参数；
+ *    Func函数的作用就是从每个Observable中获取一个数据进行结合后发射出去；
+ * ②.小Observable的每个数据只能组合一次，如果第二个小Observable发射数据的时候，
+ *    第一个还没有发射，将要等待第一个发射数据后才能组合；
+ */
+        Observable.zip(obs1, obs2,
+                new Func2<Integer, Integer, String>() {
+                    //使用一个函数结合每个小Observable的一个数据（每个数据只能组合一次），然后发射这个函数的返回值
+                    @Override
+                    public String call(Integer int1, Integer int2) {
+                        return int1 + "-" + int2;
+                    }
+                }).subscribe(new Action1<String>() {
+            @Override
+            public void call(String s) {
+                print("zip:" + s);
+            }
+        });
+
+/*
+ * zipWith(Observable,Func2):
+ * ①.zipWith不是static的，必须由一个Observable对象调用
+ * ②.如果要组合多个Observable，可以传递Iterable
+ */
+        obs1.zipWith(obs2, new Func2<Integer, Integer, String>() {
+            //使用一个函数结合每个小Observable的一个数据（每个数据只能组合一次），然后发射这个函数的返回值
+            @Override
+            public String call(Integer int1, Integer int2) {
+                return int1 + "-" + int2;
+            }
+        }).subscribe(new Action1<String>() {
+            @Override
+            public void call(String s) {
+                print("zipWith:" + s);
+            }
+        });
+
+    }
+
+
+    private void print(String str) {
+        System.out.println(str);
     }
 
 

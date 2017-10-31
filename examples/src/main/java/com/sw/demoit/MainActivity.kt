@@ -2,17 +2,12 @@ package com.sw.demoit
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.alibaba.android.arouter.launcher.ARouter
 import com.sw.demoit.annotation.clazz.BindViewClazzActivity
 import com.sw.demoit.annotation.runtime.BindViewRuntimeActivity
 import com.sw.mvp.presenters.TaskActivity
 import com.sw.retrofit.Demo1Activity
-import com.sw.rxjava.hello.TestActivity
-import rx.Observable
-import rx.android.schedulers.AndroidSchedulers
-import rx.functions.Action1
-import java.util.concurrent.TimeUnit
+import com.sw.rxjava.hello.TestRxjavaActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -54,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             Demo1Activity.invoke(this@MainActivity)
         }
         findViewById(R.id.rxjava_tv)!!.setOnClickListener {
-            TestActivity.invoke(this@MainActivity)
+            TestRxjavaActivity.invoke(this@MainActivity)
         }
     }
 }

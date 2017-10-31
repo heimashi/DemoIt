@@ -20,11 +20,11 @@
         android:text="testCombineLast" />
 
     <TextView
-        android:id="@+id/class_annotation_tv"
+        android:id="@+id/test_join"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
-        android:text="to class annotation demo" />
+        android:text="test_join" />
 
     <TextView
         android:id="@+id/router_tv"

@@ -20,7 +20,7 @@ import rx.functions.Action1;
  * Created by shiwang on 31/10/2017.
  */
 
-public class TestActivity extends Activity {
+public class TestRxjavaActivity extends Activity {
 
     private int i = 0;
 
@@ -36,7 +36,7 @@ public class TestActivity extends Activity {
                         .subscribe(new Action1<Long>() {
                             @Override
                             public void call(Long aLong) {
-                                Toast.makeText(TestActivity.this, "haha" + i++, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(TestRxjavaActivity.this, "haha" + i++, Toast.LENGTH_SHORT).show();
                             }
                         });
             }
@@ -50,10 +50,18 @@ public class TestActivity extends Activity {
             }
         });
 
+        findViewById(R.id.test_join).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CombiningObservablesOperators operators = new CombiningObservablesOperators();
+                operators.testJoin();
+            }
+        });
+
     }
 
     public static void invoke(Context context) {
-        context.startActivity(new Intent(context, TestActivity.class));
+        context.startActivity(new Intent(context, TestRxjavaActivity.class));
     }
 
 }
