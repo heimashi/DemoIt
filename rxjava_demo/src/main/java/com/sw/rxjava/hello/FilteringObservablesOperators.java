@@ -198,6 +198,94 @@ TakeLast — emit only the last n items emitted by an Observable
                 });
     }
 
+    public void testLast() {
+        Observable.range(0, 10)
+                .last(new Func1<Integer, Boolean>() {
+                    @Override
+                    public Boolean call(Integer integer) {
+                        return integer % 3 == 2;
+                    }
+                })
+                .subscribe(new Action1<Integer>() {
+                    @Override
+                    public void call(Integer integer) {
+                        print(integer.toString());
+                    }
+                });
+    }
+
+
+    public void testSingle() {
+        Observable.range(0, 10)
+                .single(new Func1<Integer, Boolean>() {
+                    @Override
+                    public Boolean call(Integer integer) {
+                        return integer % 4 == 0;
+                    }
+                })
+                .subscribe(new Action1<Integer>() {
+                    @Override
+                    public void call(Integer integer) {
+                        print(integer.toString());
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        print(throwable.toString());
+                    }
+                });
+    }
+
+    public void testDistinct() {
+        Observable.just(2, 3, 6, 3, 1, 2)
+                .distinct()
+                .subscribe(new Action1<Integer>() {
+                    @Override
+                    public void call(Integer integer) {
+                        print(integer.toString());
+                    }
+                });
+    }
+
+    public void testIgnoreElements() {
+        Observable.just(2, 3, 6, 3, 1, 2)
+                .ignoreElements()
+                .subscribe(new Subscriber<Integer>() {
+                    @Override
+                    public void onCompleted() {
+                        print("onCompleted");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        print(e.toString());
+                    }
+
+                    @Override
+                    public void onNext(Integer integer) {
+                        print(integer.toString());
+                    }
+                });
+    }
+
+    public void testSample(){
+        Observable.interval(1, TimeUnit.SECONDS).sample(2, TimeUnit.SECONDS, Schedulers.newThread()).subscribe(new Subscriber<Long>() {
+            @Override
+            public void onCompleted() {
+                print("-------->onCompleted()");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                print("-------->onError()" + e);
+            }
+
+            @Override
+            public void onNext(Long aLong) {
+                print("-------->onNext()" + aLong + "   thread:" + Thread.currentThread().getName());
+            }
+        });
+    }
 
     private void print(String str) {
         System.out.println(str);

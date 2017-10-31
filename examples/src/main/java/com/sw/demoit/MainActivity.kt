@@ -8,6 +8,7 @@ import com.sw.demoit.annotation.clazz.BindViewClazzActivity
 import com.sw.demoit.annotation.runtime.BindViewRuntimeActivity
 import com.sw.mvp.presenters.TaskActivity
 import com.sw.retrofit.Demo1Activity
+import com.sw.rxjava.hello.TestActivity
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import rx.functions.Action1
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         val classAnnotationView = findViewById(R.id.class_annotation_tv)
         val routerView = findViewById(R.id.router_tv)
         val retrofitView = findViewById(R.id.retrofit_tv)
+
         mvpView!!.setOnClickListener {
             TaskActivity.invoke(this@MainActivity)
         }
@@ -39,17 +41,20 @@ class MainActivity : AppCompatActivity() {
             BindViewClazzActivity.invoke(this@MainActivity)
         }
         routerView!!.setOnClickListener {
-            var i = 0
-            Observable.interval(2, 3, TimeUnit.SECONDS)
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(Action1 { Toast.makeText(this@MainActivity, "haha" + i++, Toast.LENGTH_SHORT).show() })
+            //            var i = 0
+//            Observable.interval(2, 3, TimeUnit.SECONDS)
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .subscribe(Action1 { Toast.makeText(this@MainActivity, "haha" + i++, Toast.LENGTH_SHORT).show() })
             ARouter.getInstance().build("/test/aactivity").navigation()
         }
         retrofitView!!.setOnClickListener {
-            Observable.timer(3, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(Action1 {
-                Toast.makeText(this@MainActivity, "haha", Toast.LENGTH_SHORT).show()
-            })
+            //            Observable.timer(3, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(Action1 {
+//                Toast.makeText(this@MainActivity, "haha", Toast.LENGTH_SHORT).show()
+//            })
             Demo1Activity.invoke(this@MainActivity)
+        }
+        findViewById(R.id.rxjava_tv)!!.setOnClickListener {
+            TestActivity.invoke(this@MainActivity)
         }
     }
 }

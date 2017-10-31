@@ -3,6 +3,7 @@
     package="com.sw.demoit">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"

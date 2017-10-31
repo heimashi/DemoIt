@@ -57,4 +57,25 @@ public class FilteringObservablesOperatorsTest {
         operators.testFirst2();
     }
 
+    @Test
+    public void testLast() throws Exception {
+        operators.testLast();
+    }
+
+    @Test
+    public void testSingle() throws Exception {
+        operators.testSingle();
+    }
+
+    @Test
+    public void testDistinct() throws Exception {
+        operators.testDistinct();
+    }
+
+    @Test
+    public void testIgnoreElements() throws Exception {
+        operators.testIgnoreElements();
+    }
+
+
 }

@@ -9,6 +9,14 @@ import rx.schedulers.Schedulers;
 
 public class Hello {
 
+    /*
+    *
+    *http://gank.io/post/560e15be2dca930e00da1083
+    *
+    * http://blog.csdn.net/xmxkf/article/details/51612415
+    *
+    * */
+
     public void test00() {
 
         //被观察者

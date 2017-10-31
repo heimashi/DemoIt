@@ -6,18 +6,18 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/mvp_tv"
+        android:id="@+id/test_interval"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
-        android:text="to mvp demo" />
+        android:text="test_interval" />
 
     <TextView
-        android:id="@+id/runtime_annotation_tv"
+        android:id="@+id/test_com"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
-        android:text="to runtime annotation demo" />
+        android:text="testCombineLast" />
 
     <TextView
         android:id="@+id/class_annotation_tv"
@@ -40,10 +40,5 @@
         android:gravity="center"
         android:text="to retrofit demo" />
 
-    <TextView
-        android:id="@+id/rxjava_tv"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="to rxjava demo" />
+
 </LinearLayout>
