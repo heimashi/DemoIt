@@ -8,6 +8,6 @@ package com.sw.kotlin.two_basic;
 public class BasicKotlin {
 
     public void test01(){
-        Hello00Kt.test06();
+        Hello02Kt.test06();
     }
 }
