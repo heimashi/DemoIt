@@ -23,6 +23,12 @@ public class TransformingObservablesOperatorsTest {
 
 
     @Test
+    public void testFlatMap2() throws Exception {
+        operators.testFlatMap2();
+    }
+
+
+    @Test
     public void testGroupBy() throws Exception {
         operators.testGroupBy();
     }

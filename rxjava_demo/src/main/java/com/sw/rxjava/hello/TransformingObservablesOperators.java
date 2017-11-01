@@ -75,6 +75,24 @@ Window — periodically subdivide items from an Observable into Observable windo
 
     }
 
+    public void testFlatMap2() {
+        Observable.just("123-423-43-355-0045","00-123","11-223-2")
+                .flatMap(new Func1<String, Observable<String>>() {
+                    @Override
+                    public Observable<String> call(String s) {
+                        print("s:"+s);
+                        return Observable.from(s.split("-"));
+                    }
+                })
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String s) {
+                        print(s);
+                    }
+                });
+
+    }
+
 
     public void testGroupBy() {
         Observable.range(0, 11)
