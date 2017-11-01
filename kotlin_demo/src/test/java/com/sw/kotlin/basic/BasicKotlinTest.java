@@ -1,8 +1,6 @@
-package com.sw.kotlin.two_basic;
+package com.sw.kotlin.basic;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by shiwang on 01/11/2017.

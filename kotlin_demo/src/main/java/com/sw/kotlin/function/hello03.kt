@@ -1,5 +1,7 @@
 package com.sw.kotlin.function
 
+import com.sw.kotlin.clazz.*
+
 
 /*
 *集合

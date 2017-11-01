@@ -1,4 +1,4 @@
-package com.sw.kotlin.two_basic;
+package com.sw.kotlin.basic;
 
 
 /**
