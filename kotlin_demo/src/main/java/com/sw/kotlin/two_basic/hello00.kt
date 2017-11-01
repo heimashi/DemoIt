@@ -22,6 +22,7 @@ val a3 = 100
 
 var a4: String = "hello"
 
+
 fun aa(args: Array<String>) {
     val a = "kotlin"
     println("hello $a")
@@ -79,6 +80,36 @@ fun test03(color: Color) =
         }
 
 
+fun test04(c1: Color, c2: Color) =
+        when (setOf(c1, c2)) {
+            setOf(Color.RED, Color.ORANGE) -> "good color"
+            else -> "bad color"
+        }
+
+fun test05(): String {
+    return when {
+        2 in 1..10 -> "good"
+        4 is Int -> "haha"
+        else -> "bad"
+    }
+}
 
 
+interface Expr
+class Num(val value: Int) : Expr
+class Sum(val left: Expr, val right: Expr) : Expr
 
+fun eval(e: Expr): Int {
+    if (e is Num) {
+        val n = e as Num
+        return n.value
+    }
+    if (e is Sum) {
+        return eval(e.left) + eval(e.right)
+    }
+    throw IllegalArgumentException("error expr")
+}
+
+fun test06() {
+    println(eval(Sum(Sum(Num(1), Num(2)), Num(4))))
+}
