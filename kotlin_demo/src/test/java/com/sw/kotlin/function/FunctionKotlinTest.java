@@ -21,4 +21,9 @@ public class FunctionKotlinTest {
     public void test02() throws Exception {
         kotlin.test02();
     }
+
+    @Test
+    public void test03() throws Exception {
+        kotlin.test03();
+    }
 }

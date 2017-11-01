@@ -1,7 +1,6 @@
 package com.sw.kotlin.function;
 
 
-import com.sw.kotlin.two_basic.Hello02Kt;
 
 /**
  * Created by shiwang on 01/11/2017.
@@ -17,5 +16,11 @@ public class FunctionKotlin {
         Hello03Kt.test02();
         Hello03Kt.test03();
         Hello03Kt.test04();
+    }
+
+    public void test03(){
+        Hello03Kt.test07("333","aaab");
+        Hello03Kt.test08();
+        Hello03Kt.test09();
     }
 }
