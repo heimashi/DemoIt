@@ -1,5 +1,7 @@
 package com.sw.kotlin.clazz
 
+import android.widget.TextView
+
 /*
 * 接口
 * */
@@ -145,4 +147,61 @@ class DelegatingAA2(a: AA = AA()) : Haha by a {
 }
 
 
+/*
+* object
+* */
+object CC {
+    val d = "str"
+    fun e() {
 
+    }
+}
+
+fun testObject() {
+    CC.d
+    CC.e()
+}
+
+class DD {
+    companion object {
+        fun aa() {
+
+        }
+    }
+}
+
+class Book private constructor(val bookName: String) {
+    companion object {
+        fun newABook(aa: String) = Book(aa)
+        fun newBBook(bb: String) = Book(bb)
+    }
+
+}
+
+fun testCompanion() {
+    DD.aa()
+    val bookA = Book.newABook("aaa")
+    val bookB = Book.newBBook("bbb")
+}
+
+interface OnClickListener {
+    fun onClick()
+}
+
+class View {
+    var listener: OnClickListener? = null;
+    fun setOnClickListener(listener: OnClickListener?) {
+        this.listener = listener
+    }
+}
+
+fun test10() {
+    val view = View()
+    var i = 0
+    view.setOnClickListener(object : OnClickListener {
+        override fun onClick() {
+            println("aaa")
+            i++
+        }
+    })
+}
