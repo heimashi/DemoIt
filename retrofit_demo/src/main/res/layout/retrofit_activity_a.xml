@@ -19,4 +19,12 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="POST TEST" />
+
+    <Button
+        android:id="@+id/post2_btn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="POST2 TEST" />
 </LinearLayout>
