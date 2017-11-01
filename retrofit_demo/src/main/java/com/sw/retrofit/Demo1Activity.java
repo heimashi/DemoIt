@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,6 +18,10 @@ import java.util.HashMap;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 
 public class Demo1Activity extends Activity {
@@ -44,6 +49,12 @@ public class Demo1Activity extends Activity {
             @Override
             public void onClick(View v) {
                 doPost2();
+            }
+        });
+        findViewById(R.id.rx1_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testRxjavaAndRetrofit1();
             }
         });
     }
@@ -100,6 +111,37 @@ public class Demo1Activity extends Activity {
                 Toast.makeText(Demo1Activity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void testRxjavaAndRetrofit1() {
+        mockService.getDataC()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(Schedulers.io())
+                .doOnNext(new Action1<AData>() {
+                    @Override
+                    public void call(AData aData) {
+                        //save to db
+                        Log.i("test", "save to db");
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<AData>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.i("test", "onCompleted");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.i("test", "onError");
+                    }
+
+                    @Override
+                    public void onNext(AData aData) {
+                        Log.i("test", "onNext:" + aData.data);
+                    }
+                });
+
     }
 
     public static void invoke(Context context) {

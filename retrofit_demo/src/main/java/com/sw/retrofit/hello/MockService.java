@@ -12,6 +12,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Url;
+import rx.Observable;
 
 /**
  * Created by shiwang on 26/10/2017.
@@ -31,4 +32,8 @@ public interface MockService {
     @POST
     @FormUrlEncoded
     Call<BData> getPostDataB(@Url String url, @FieldMap Map<String, String> maps);
+
+
+    @GET("path/a")
+    Observable<AData> getDataC();
 }
