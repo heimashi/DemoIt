@@ -16,5 +16,6 @@ public class FunctionKotlin {
     public void test02(){
         Hello03Kt.test02();
         Hello03Kt.test03();
+        Hello03Kt.test04();
     }
 }
