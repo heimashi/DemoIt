@@ -25,4 +25,9 @@ public class TypeKotlinTest {
         kotlin.test03();
     }
 
+    @Test
+    public void test04() throws Exception {
+        kotlin.test04();
+    }
+
 }

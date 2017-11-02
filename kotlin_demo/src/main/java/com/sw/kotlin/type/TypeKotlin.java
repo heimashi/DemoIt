@@ -18,4 +18,8 @@ public class TypeKotlin {
     public void test03() {
         Hello06Kt.test06();
     }
+
+    public void test04() {
+        Hello06Kt.test08();
+    }
 }

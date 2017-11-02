@@ -111,19 +111,40 @@ fun test06() {
 }
 
 
-fun fail(message: String): Nothing{
+fun fail(message: String): Nothing {
     throw IllegalStateException(message)
 }
 
-fun test07(){
+fun test07() {
     fail("hahaha")
 }
 
 
+/*
+* 运算符重载
+* */
+class Point(val x: Int, val y: Int) {
+    operator fun plus(other: Point): Point {
+        return Point(x + other.x, y + other.y)
+    }
+
+    override fun toString(): String {
+        return "[x:$x, y:$y]"
+    }
+
+    operator fun minus(other: Point): Point {
+        return Point(x - other.x, y - other.y)
+    }
+
+}
 
 
-
-
+fun test08() {
+    val point1 = Point(10, 10)
+    val point2 = Point(4, 4)
+    println(point1 + point2)
+    println(point1 - point2)
+}
 
 
 
