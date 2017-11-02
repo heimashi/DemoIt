@@ -10,4 +10,12 @@ public class TypeKotlin {
     public void test01() {
         Hello06Kt.test02();
     }
+
+    public void test02() {
+        Hello06Kt.test04();
+    }
+
+    public void test03() {
+        Hello06Kt.test06();
+    }
 }
