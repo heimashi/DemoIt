@@ -15,4 +15,18 @@ public class HighFunKotlinTest {
         kotlin.test01();
     }
 
+    @Test
+    public void test03() throws Exception {
+        kotlin.test03();
+    }
+
+    @Test
+    public void test04() throws Exception {
+        kotlin.test04();
+    }
+
+    @Test
+    public void test05() throws Exception {
+        kotlin.test05();
+    }
 }
