@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.LinearLayout;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.sw.mvp.R;
 import com.sw.mvp.bean.BTaskData;
 import com.sw.mvp.bean.ATaskData;
@@ -16,6 +17,7 @@ import com.sw.mvp.views.BTaskView;
 import com.sw.mvp.views.LoadingView;
 
 
+@Route(path = "/mvp/taskctivity")
 public class TaskActivity extends Activity {
 
     //Views

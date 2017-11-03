@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity() {
         val retrofitView = findViewById(R.id.retrofit_tv)
 
         mvpView!!.setOnClickListener {
-            TaskActivity.invoke(this@MainActivity)
+            //TaskActivity.invoke(this@MainActivity)
+            ARouter.getInstance().build("/mvp/taskctivity").navigation()
         }
         annotationView!!.setOnClickListener {
             BindViewRuntimeActivity.invoke(this@MainActivity)
