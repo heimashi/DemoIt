@@ -2,6 +2,7 @@ package com.sw.anko.common
 
 import android.app.Activity
 import android.os.Bundle
+import org.jetbrains.anko.selector
 import org.jetbrains.anko.toast
 
 /**
@@ -14,7 +15,11 @@ class Test02Activity : Activity() {
 
         var value1 = intent.extras.getString("key")
         var value2 = intent.extras.getInt("key2")
-        toast(value1+value2)
+
+        val countries = listOf("Russia", "USA", "England", "Australia")
+        selector("Where are you from?", countries) { ds, i ->
+            toast("So you're living in ${countries[i]}, right?")
+        }
 
     }
 
