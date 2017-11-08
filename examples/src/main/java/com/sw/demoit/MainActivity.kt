@@ -3,11 +3,12 @@ package com.sw.demoit
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.alibaba.android.arouter.launcher.ARouter
+//import com.sw.anko.common.AnkoTest01Activity
 import com.sw.demoit.annotation.clazz.BindViewClazzActivity
 import com.sw.demoit.annotation.runtime.BindViewRuntimeActivity
-import com.sw.mvp.presenters.TaskActivity
 import com.sw.retrofit.Demo1Activity
 import com.sw.rxjava.hello.TestRxjavaActivity
+import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,6 +52,9 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById(R.id.rxjava_tv)!!.setOnClickListener {
             TestRxjavaActivity.invoke(this@MainActivity)
+        }
+        findViewById(R.id.anko_tv)!!.setOnClickListener {
+//            startActivity<AnkoTest01Activity>("key" to "value")
         }
     }
 }
