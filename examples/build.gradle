@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'plugin.test'
+apply plugin: 'plugin.task.stat'
 
 android {
     compileSdkVersion 26
