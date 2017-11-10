@@ -36,10 +36,10 @@ class TaskStatListener implements TaskExecutionListener, BuildListener {
             }
         }
         times.sort { a, b ->
-            a.k > b.k ? 1 : 0
+            a.k > b.k ? 1 : ((a.k == b.k) ? 0 : -1)
         }
         for (time in times) {
-            printf "%10sms  %s\n", time.k, time.v
+            printf "%15sms  %s\n", time.k, time.v
         }
 
     }
