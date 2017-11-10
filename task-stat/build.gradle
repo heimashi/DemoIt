@@ -1,5 +1,6 @@
 apply plugin: 'groovy'
 apply plugin: 'maven'
+apply plugin: 'com.novoda.bintray-release'
 
 dependencies {
     compile gradleApi()
@@ -20,3 +21,14 @@ uploadArchives {
         }
     }
 }
+
+publish {
+    userOrg = 'heimashi'
+    groupId = 'com.sw.task.stat'
+    artifactId = 'task-stat'
+    publishVersion = '1.0.0'
+    desc = 'This is a gradle plugin for counting the time spent on all tasks'
+    website = 'https://github.com/heimashi/DemoIt'
+}
+
+//./gradlew clean build bintrayUpload -PbintrayUser=BINTRAY_USERNAME -PbintrayKey=BINTRAY_KEY -PdryRun=false
