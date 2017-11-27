@@ -30,5 +30,5 @@ publish {
     desc = 'This is a gradle plugin for counting the time spent on all tasks'
     website = 'https://github.com/heimashi/DemoIt'
 }
-
+//https://github.com/novoda/bintray-release
 //./gradlew clean build bintrayUpload -PbintrayUser=BINTRAY_USERNAME -PbintrayKey=BINTRAY_KEY -PdryRun=false
