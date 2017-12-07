@@ -1,7 +1,9 @@
 package com.sw.demoit
 
-import android.support.v7.app.AppCompatActivity
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import com.alibaba.android.arouter.launcher.ARouter
 import com.sw.anko.common.AnkoTest01Activity
 import com.sw.demoit.annotation.clazz.BindViewClazzActivity
@@ -9,23 +11,31 @@ import com.sw.demoit.annotation.runtime.BindViewRuntimeActivity
 import com.sw.retrofit.Demo1Activity
 import com.sw.rxjava.hello.TestRxjavaActivity
 import org.jetbrains.anko.startActivity
+import android.content.IntentFilter
+import com.sw.onepixel.OnePixelReceiver
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : Activity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        registerOnePixel()
         initView()
-
     }
 
     private fun initView() {
         setContentView(R.layout.activity_main)
-        val mvpView = findViewById(R.id.mvp_tv)
-        val annotationView = findViewById(R.id.runtime_annotation_tv)
-        val classAnnotationView = findViewById(R.id.class_annotation_tv)
-        val routerView = findViewById(R.id.router_tv)
-        val retrofitView = findViewById(R.id.retrofit_tv)
+        val mvpView: TextView? = findViewById(R.id.mvp_tv)
+        val annotationView: TextView? = findViewById(R.id.runtime_annotation_tv)
+        val classAnnotationView: TextView? = findViewById(R.id.class_annotation_tv)
+        val routerView: TextView? = findViewById(R.id.router_tv)
+        val retrofitView: TextView? = findViewById(R.id.retrofit_tv)
+        val rxjavaTv: TextView? = findViewById(R.id.rxjava_tv)
+        val ankoTv: TextView? = findViewById(R.id.anko_tv)
+        val onePixelTv: TextView? = findViewById(R.id.one_pixel_tv)
+
+
 
         mvpView?.setOnClickListener {
             //TaskActivity.invoke(this@MainActivity)
@@ -50,11 +60,21 @@ class MainActivity : AppCompatActivity() {
 //            })
             Demo1Activity.invoke(this@MainActivity)
         }
-        findViewById(R.id.rxjava_tv)?.setOnClickListener {
+        rxjavaTv?.setOnClickListener {
             TestRxjavaActivity.invoke(this@MainActivity)
         }
-        findViewById(R.id.anko_tv)?.setOnClickListener {
+        ankoTv?.setOnClickListener {
             startActivity<AnkoTest01Activity>("key" to "value")
         }
+        onePixelTv?.setOnClickListener{
+
+        }
+    }
+
+    private fun registerOnePixel(){
+        val filter = IntentFilter()
+        filter.addAction(Intent.ACTION_SCREEN_ON)
+        filter.addAction(Intent.ACTION_SCREEN_OFF)
+        registerReceiver(OnePixelReceiver(), filter)
     }
 }
