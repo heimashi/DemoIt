@@ -81,7 +81,7 @@ def search(*args):
     command("grep -E %s --exclude-dir={.git,lib,.gradle,.idea,build,captures} --exclude={*.jar}  . -R --color=always -n" % arg)
 
 # 打印进程相关信息（进程id、oom_adj值）
-def process():
+def adj():
     command_str = "adb shell ps | grep %s | grep -v : | awk '{print $2}'" % PACKAGE
     p = os.popen(command_str)
     pid = p.readline().strip()

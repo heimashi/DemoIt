@@ -1,2 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sw.others" />
+    package="com.sw.others">
+
+    <application>
+        <activity android:name=".localbroad.ALocalBroadcastActivity" />
+        <activity android:name=".localbroad.BLocalBroadcastActivity" />
+    </application>
+
+</manifest>

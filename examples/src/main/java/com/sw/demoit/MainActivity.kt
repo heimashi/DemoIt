@@ -13,6 +13,7 @@ import com.sw.rxjava.hello.TestRxjavaActivity
 import org.jetbrains.anko.startActivity
 import android.content.IntentFilter
 import com.sw.onepixel.OnePixelReceiver
+import com.sw.others.localbroad.ALocalBroadcastActivity
 
 
 class MainActivity : Activity() {
@@ -33,7 +34,7 @@ class MainActivity : Activity() {
         val retrofitView: TextView? = findViewById(R.id.retrofit_tv)
         val rxjavaTv: TextView? = findViewById(R.id.rxjava_tv)
         val ankoTv: TextView? = findViewById(R.id.anko_tv)
-        val onePixelTv: TextView? = findViewById(R.id.one_pixel_tv)
+        val otherTv: TextView? = findViewById(R.id.other_tv)
 
 
 
@@ -66,8 +67,8 @@ class MainActivity : Activity() {
         ankoTv?.setOnClickListener {
             startActivity<AnkoTest01Activity>("key" to "value")
         }
-        onePixelTv?.setOnClickListener{
-
+        otherTv?.setOnClickListener{
+            startActivity(Intent(this@MainActivity, ALocalBroadcastActivity::class.java))
         }
     }
 
