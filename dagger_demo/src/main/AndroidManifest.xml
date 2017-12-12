@@ -1,0 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sw.dagger">
+
+    <application>
+        <activity android:name=".todo.TodoActivity" />
+    </application>
+</manifest>

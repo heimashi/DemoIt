@@ -39,6 +39,7 @@ dependencies {
     compile project(':kotlin_demo')
     compile project(':anko_demo')
     compile project(':rxjava_demo')
+    compile project(':dagger_demo')
     compile project(':annotation')
     compile project(':others')
     implementation project(':onepixel')
