@@ -16,7 +16,7 @@ import javax.inject.Inject;
 public class Todo2Activity extends Activity implements Todo2Contract.View {
 
     @Inject
-    Todo2Presenter presenter;
+    Todo2Contract.Presenter presenter;
 
     private TextView textView;
 

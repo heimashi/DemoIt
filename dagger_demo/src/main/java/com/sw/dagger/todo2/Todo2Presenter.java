@@ -20,7 +20,7 @@ public class Todo2Presenter implements Todo2Contract.Presenter {
 
     private Handler handler;
 
-    @Inject
+    //@Inject
     public Todo2Presenter(Todo2Contract.View view) {
         this.mView = view;
         handler = new Handler(Looper.getMainLooper());
