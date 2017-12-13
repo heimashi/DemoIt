@@ -1,6 +1,7 @@
 package com.sw.retrofit.hello;
 
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
@@ -21,6 +22,7 @@ public class RetrofitClient {
             retrofitClient = new RetrofitClient();
             retrofitClient.retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
