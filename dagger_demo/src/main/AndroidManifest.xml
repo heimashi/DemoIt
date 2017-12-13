@@ -4,5 +4,6 @@
     <application>
         <activity android:name=".todo.TodoActivity" />
         <activity android:name=".todo2.Todo2Activity" />
+        <activity android:name=".scope.TestScopeActivity" />
     </application>
 </manifest>

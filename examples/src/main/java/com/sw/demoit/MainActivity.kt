@@ -12,6 +12,7 @@ import com.sw.retrofit.Demo1Activity
 import com.sw.rxjava.hello.TestRxjavaActivity
 import org.jetbrains.anko.startActivity
 import android.content.IntentFilter
+import com.sw.dagger.scope.TestScopeActivity
 import com.sw.dagger.todo.TodoActivity
 import com.sw.dagger.todo2.Todo2Activity
 import com.sw.onepixel.OnePixelReceiver
@@ -43,7 +44,7 @@ class MainActivity : Activity() {
         mvpView?.setOnClickListener {
             //TaskActivity.invoke(this@MainActivity)
             //ARouter.getInstance().build("/mvp/taskctivity").navigation()
-            Todo2Activity.invoke(this@MainActivity)
+            TestScopeActivity.invoke(this@MainActivity)
         }
         annotationView?.setOnClickListener {
             BindViewRuntimeActivity.invoke(this@MainActivity)
