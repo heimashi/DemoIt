@@ -28,13 +28,33 @@ fun test01() {
             println("aaa")
         }
     })
+
+    view.setOnClickListener {
+        println("bb");
+    }
+
+
+}
+
+class View2 {
+    private var onClickListener2: (() -> Unit)? = null;
+
+    fun setOnClickListener2(listener: () -> Unit) {
+        onClickListener2 = listener
+    }
+
+    fun test() {
+        onClickListener2?.invoke()
+    }
+
 }
 
 fun test02() {
-    val view = View()
-    view.setOnClickListener {
-        println()
+    val view2 = View2()
+    view2.setOnClickListener2 {
+
     }
+
 }
 
 
@@ -123,5 +143,5 @@ fun createMyTextView(context: Context) =
         TextView(context).apply {
             text = "content"
             textSize = 20.0f
-            setPadding(10,0,0,0)
+            setPadding(10, 0, 0, 0)
         }
