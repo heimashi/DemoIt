@@ -18,6 +18,7 @@ import com.sw.dagger.todo2.Todo2Activity
 import com.sw.onepixel.OnePixelReceiver
 import com.sw.others.localbroad.ALocalBroadcastActivity
 import com.sw.rxjava2_demo.Rxjava2Activity
+import com.sw.vr_demo.GVRActivity
 
 
 class MainActivity : Activity() {
@@ -46,7 +47,8 @@ class MainActivity : Activity() {
             //TaskActivity.invoke(this@MainActivity)
             //ARouter.getInstance().build("/mvp/taskctivity").navigation()
             //TestScopeActivity.invoke(this@MainActivity)
-            Rxjava2Activity.invoke(this@MainActivity)
+            //Rxjava2Activity.invoke(this@MainActivity)
+            GVRActivity.invoke(this@MainActivity)
         }
         annotationView?.setOnClickListener {
             BindViewRuntimeActivity.invoke(this@MainActivity)
