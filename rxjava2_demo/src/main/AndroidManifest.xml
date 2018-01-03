@@ -1,0 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sw.rxjava2_demo" >
+
+    <application>
+        <activity android:name="com.sw.rxjava2_demo.Rxjava2Activity"/>
+    </application>
+</manifest>

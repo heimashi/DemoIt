@@ -17,6 +17,7 @@ import com.sw.dagger.todo.TodoActivity
 import com.sw.dagger.todo2.Todo2Activity
 import com.sw.onepixel.OnePixelReceiver
 import com.sw.others.localbroad.ALocalBroadcastActivity
+import com.sw.rxjava2_demo.Rxjava2Activity
 
 
 class MainActivity : Activity() {
@@ -44,7 +45,8 @@ class MainActivity : Activity() {
         mvpView?.setOnClickListener {
             //TaskActivity.invoke(this@MainActivity)
             //ARouter.getInstance().build("/mvp/taskctivity").navigation()
-            TestScopeActivity.invoke(this@MainActivity)
+            //TestScopeActivity.invoke(this@MainActivity)
+            Rxjava2Activity.invoke(this@MainActivity)
         }
         annotationView?.setOnClickListener {
             BindViewRuntimeActivity.invoke(this@MainActivity)
@@ -71,12 +73,12 @@ class MainActivity : Activity() {
         ankoTv?.setOnClickListener {
             startActivity<AnkoTest01Activity>("key" to "value")
         }
-        otherTv?.setOnClickListener{
+        otherTv?.setOnClickListener {
             startActivity(Intent(this@MainActivity, ALocalBroadcastActivity::class.java))
         }
     }
 
-    private fun registerOnePixel(){
+    private fun registerOnePixel() {
         val filter = IntentFilter()
         filter.addAction(Intent.ACTION_SCREEN_ON)
         filter.addAction(Intent.ACTION_SCREEN_OFF)
