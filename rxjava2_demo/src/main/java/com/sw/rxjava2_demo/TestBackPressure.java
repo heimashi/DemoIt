@@ -255,5 +255,32 @@ public class TestBackPressure {
                 });
     }
 
+    public void test07(){
+        Flowable.just(1, 2, 3, 4, 5)
+                .subscribe(new Subscriber<Integer>() {
+                    Subscription sub;
+                    @Override
+                    public void onSubscribe(Subscription s) {
+                        log("onsubscribe start");
+                        sub=s;
+                        sub.request(1);
+                        log("onsubscribe end");
+                    }
+                    @Override
+                    public void onNext(Integer o) {
+                        log("onNext--->"+o);
+                        sub.request(1);
+                    }
+                    @Override
+                    public void onError(Throwable t) {
+                        t.printStackTrace();
+                    }
+                    @Override
+                    public void onComplete() {
+                        log("onComplete");
+                    }
+                });
+    }
+
 
 }
