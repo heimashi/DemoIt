@@ -12,7 +12,7 @@ import com.sw.retrofit.Demo1Activity
 import com.sw.rxjava.hello.TestRxjavaActivity
 import org.jetbrains.anko.startActivity
 import android.content.IntentFilter
-import com.sw.nest_demo.CoordinatorLayout2Activity
+import com.sw.nest_demo.CoordinatorLayout5Activity
 import com.sw.onepixel.OnePixelReceiver
 import com.sw.others.localbroad.ALocalBroadcastActivity
 import com.sw.vr_demo.GVRActivity
@@ -69,7 +69,7 @@ class MainActivity : Activity() {
 
         }
 
-        nest_tv?.setOnClickListener { startActivity(Intent(this@MainActivity, CoordinatorLayout2Activity::class.java)) }
+        nest_tv?.setOnClickListener { startActivity(Intent(this@MainActivity, CoordinatorLayout5Activity::class.java)) }
     }
 
     private fun registerOnePixel() {

@@ -3,5 +3,8 @@
     <application>
         <activity android:name=".CoordinatorLayout1Activity"/>
         <activity android:name=".CoordinatorLayout2Activity"/>
+        <activity android:name=".CoordinatorLayout3Activity"/>
+        <activity android:name=".CoordinatorLayout4Activity"/>
+        <activity android:name=".CoordinatorLayout5Activity"/>
     </application>
 </manifest>
