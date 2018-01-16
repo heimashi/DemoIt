@@ -12,13 +12,11 @@ import com.sw.retrofit.Demo1Activity
 import com.sw.rxjava.hello.TestRxjavaActivity
 import org.jetbrains.anko.startActivity
 import android.content.IntentFilter
-import com.sw.dagger.scope.TestScopeActivity
-import com.sw.dagger.todo.TodoActivity
-import com.sw.dagger.todo2.Todo2Activity
+import com.sw.nest_demo.CoordinatorLayout2Activity
 import com.sw.onepixel.OnePixelReceiver
 import com.sw.others.localbroad.ALocalBroadcastActivity
-import com.sw.rxjava2_demo.Rxjava2Activity
 import com.sw.vr_demo.GVRActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : Activity() {
@@ -32,52 +30,46 @@ class MainActivity : Activity() {
 
     private fun initView() {
         setContentView(R.layout.activity_main)
-        val mvpView: TextView? = findViewById(R.id.mvp_tv)
-        val annotationView: TextView? = findViewById(R.id.runtime_annotation_tv)
-        val classAnnotationView: TextView? = findViewById(R.id.class_annotation_tv)
-        val routerView: TextView? = findViewById(R.id.router_tv)
-        val retrofitView: TextView? = findViewById(R.id.retrofit_tv)
-        val rxjavaTv: TextView? = findViewById(R.id.rxjava_tv)
-        val ankoTv: TextView? = findViewById(R.id.anko_tv)
-        val otherTv: TextView? = findViewById(R.id.other_tv)
 
 
-
-        mvpView?.setOnClickListener {
+        mvp_tv?.setOnClickListener {
             //TaskActivity.invoke(this@MainActivity)
             //ARouter.getInstance().build("/mvp/taskctivity").navigation()
             //TestScopeActivity.invoke(this@MainActivity)
             //Rxjava2Activity.invoke(this@MainActivity)
             GVRActivity.invoke(this@MainActivity)
         }
-        annotationView?.setOnClickListener {
+        runtime_annotation_tv?.setOnClickListener {
             BindViewRuntimeActivity.invoke(this@MainActivity)
         }
-        classAnnotationView!!.setOnClickListener {
+        class_annotation_tv!!.setOnClickListener {
             BindViewClazzActivity.invoke(this@MainActivity)
         }
-        routerView?.setOnClickListener {
+        router_tv?.setOnClickListener {
             //            var i = 0
 //            Observable.interval(2, 3, TimeUnit.SECONDS)
 //                    .observeOn(AndroidSchedulers.mainThread())
 //                    .subscribe(Action1 { Toast.makeText(this@MainActivity, "haha" + i++, Toast.LENGTH_SHORT).show() })
             ARouter.getInstance().build("/test/aactivity").navigation()
         }
-        retrofitView?.setOnClickListener {
+        retrofit_tv?.setOnClickListener {
             //            Observable.timer(3, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(Action1 {
 //                Toast.makeText(this@MainActivity, "haha", Toast.LENGTH_SHORT).show()
 //            })
             Demo1Activity.invoke(this@MainActivity)
         }
-        rxjavaTv?.setOnClickListener {
+        rxjava_tv?.setOnClickListener {
             TestRxjavaActivity.invoke(this@MainActivity)
         }
-        ankoTv?.setOnClickListener {
+        anko_tv?.setOnClickListener {
             startActivity<AnkoTest01Activity>("key" to "value")
         }
-        otherTv?.setOnClickListener {
+        other_tv?.setOnClickListener {
             startActivity(Intent(this@MainActivity, ALocalBroadcastActivity::class.java))
+
         }
+
+        nest_tv?.setOnClickListener { startActivity(Intent(this@MainActivity, CoordinatorLayout2Activity::class.java)) }
     }
 
     private fun registerOnePixel() {

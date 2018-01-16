@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'plugin.test'
 apply plugin: 'plugin.task.stat'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 26
@@ -39,6 +40,7 @@ dependencies {
     compile project(':dagger_demo')
     compile project(':annotation')
     compile project(':others')
+    implementation project(':nest_demo')
     implementation project(':onepixel')
     implementation project(':vr_demo')
     annotationProcessor project(':annotation-compiler')

@@ -1,1 +1,1 @@
-include ':examples', ':mvp', ':annotation-compiler', ':annotation', ':router', ':retrofit_demo', ':kotlin_demo', ':rxjava_demo', ':common', ':others', ':anko_demo', ':groovy_demo', ':task-stat', ':accessibility', ':onepixel', ':dagger_demo', ':rxjava2_demo', ':vr_demo'
+include ':examples', ':mvp', ':annotation-compiler', ':annotation', ':router', ':retrofit_demo', ':kotlin_demo', ':rxjava_demo', ':common', ':others', ':anko_demo', ':groovy_demo', ':task-stat', ':accessibility', ':onepixel', ':dagger_demo', ':rxjava2_demo', ':vr_demo', ':nest_demo'
