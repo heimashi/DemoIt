@@ -53,6 +53,7 @@ public class ALocalBroadcastActivity extends Activity {
     }
 
     private void testID() {
+        UUIDNew.getInstance().getUUID(this);
         String uniqueID = UUID.randomUUID().toString();
         Log.i("TEST", "++++uuid:" + uniqueID);
         String ID = getUniquePsuedoID();
